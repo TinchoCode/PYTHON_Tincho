@@ -2,8 +2,8 @@ import tkinter as tk
 
 window= tk.Tk()
 window.title("Cambios entre Frames")
-
-posActual=1 #Variable Global de posicion
+ 
+posActual=1 #Variable Global de posicion, empezando en el Frame 1
         
 mFrame= tk.Frame(window) #Main Frame
 mFrame.pack(fill= "both", expand= True, padx= 5, pady= 5)
@@ -34,18 +34,20 @@ veo3= tk.Label(cuadroF3, text="Soy el mundo en F3") #Label para el texto
 veo3.pack()
 cuadroF3.pack_forget() #Escondo el Frame2
 
+#Funcion de cambio
 def cambio(voy):
-    global posActual
-    frame = [cuadroF1, cuadroF2, cuadroF3]
-    print("Fuera: ", posActual, voy)
-    if posActual != voy:
-        posActual-=1
-        voy -=1
-        print("Adentro: ", posActual, voy)
-        frame[posActual].pack_forget()
-        frame[voy].pack(fill="both", expand=True)
-        posActual = voy + 1
-        print("posActual es: ", posActual)
+    global posActual #Uso de la variable Global
+    frame = [cuadroF1, cuadroF2, cuadroF3] #Arrays de los Frames existentes
+    print("Fuera: ", posActual, voy) #Valor original de posActual y voy
+    if posActual != voy: #If para verificar si se esta tratando de ir al frame en que ya estamos ubicados
+        posActual-=1    #Resta necesaria
+        voy -=1         #Resta necesaria
+        #Con los valores actualizados
+        print("Adentro: ", posActual, voy) #Valores usados para tomar los elementos del array de Frames
+        frame[posActual].pack_forget() #Uso del array y la posicion(posActual) para esconder el Frame  
+        frame[voy].pack(fill="both", expand=True) #Uso del array y a donde quiero ir(voy) para mostrar ese Frame
+        posActual = voy + 1 #Actualizo posActual, es decir en que Frame se me muestre actualmente
+        print("posActual es: ", posActual) #Y el valor con el que se va a retornar 
     return posActual
 
 #Botones
