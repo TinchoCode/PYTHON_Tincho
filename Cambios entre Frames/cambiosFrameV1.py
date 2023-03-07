@@ -3,7 +3,7 @@ import tkinter as tk
 window= tk.Tk()
 window.title("Cambios entre Frames")
 
-posActual=1 #Variable Global de posicion
+posActual=1 #Variable Global de posicion, empezando en el Frame 1
         
 mFrame= tk.Frame(window) #Main Frame
 mFrame.pack(fill= "both", expand= True, padx= 5, pady= 5)
@@ -29,17 +29,18 @@ veo2= tk.Label(cuadroF2, text="Soy el mundo en F2")
 veo2.pack()
 cuadroF2.pack_forget() #Escondo el Frame2
 
-def cambio(voy):
-    global posActual
-    if voy == 2 and posActual ==1:
-        cuadroF1.pack_forget()
-        cuadroF2.pack(fill="both", expand=True)
-        posActual=2
-    if voy == 1 and posActual ==2:
+#Funcion de cambio
+def cambio(voy): 
+    global posActual #Uso de la variable GLobal
+    if voy == 2 and posActual ==1: #Si voy es 2 y la posicion actual es 1
+        cuadroF1.pack_forget() #Escondo el 1
+        cuadroF2.pack(fill="both", expand=True) #Muestro el 2
+        posActual=2 #Y actualizo la posicion actual
+    if voy == 1 and posActual ==2: #Lo mismo pero con el otro frame
         cuadroF2.pack_forget()
         cuadroF1.pack(fill="both", expand=True)
         posActual=1
-    return posActual
+    return posActual #Retorno el valor de la posicion actual
 
 #Botones
 #Boton Frame 1
