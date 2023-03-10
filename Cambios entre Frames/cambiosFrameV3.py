@@ -1,6 +1,6 @@
 import tkinter as tk
 
-class Interface:
+class Interface: #Usos de las clases
     def __init__(self, window):
         self.window= window
         self.window.title("Cambios entre Frames con Ayuda")
